@@ -1,0 +1,274 @@
+package com.sortdemo.sort;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import redis.clients.jedis.Jedis;
+
+
+public class Bubble {
+	private static Logger log = LoggerFactory.getLogger(Bubble.class);
+	
+	public static void main(String[] args) throws InterruptedException {
+		listMethod();
+	}
+	public static void listMethod() throws InterruptedException{
+		List<Object> list = new ArrayList<Object>();
+		list.add(0);
+		list.add(1);
+		list.add(2);
+		list.add(4);
+		list.add("s");
+		
+		List<Object> list2 = new ArrayList<Object>();
+		list2.add(4);
+		list2.add(6);
+		list2.add(7);
+		list2.add(8);
+		list2.add("s");
+		Collections.shuffle(list2);//????????????
+		Collections.swap(list, 1, 2);//?????????????¦Ë??
+		Collections.fill(list, 666);//????????????????????666
+		Collections.reverse(list);	//?????
+		Collections.frequency(list, 0);//??²®???§Ü?0????????
+		Collections.disjoint(list, list2);//?????????????§Û????????§Ù???true
+		Collections.rotate(list2, 0);//????§Ò??§Ö????
+		Collections.lastIndexOfSubList(list, list2);//?????????????????
+		Collections.rotate(list,1);//?????????????????
+		
+		System.out.println(Collections.frequency(list, 0));
+	}
+    /** 
+     * * ?????????   ??????1.??????????›¥?? 2.??????????§³???????§³?
+     * @param srcArray  ???????? 
+     * @param  des ??????? 
+     * @return des???????¡À?????????-1 
+     */   
+   public static int binarySearch(int[] srcArray, int des){
+        int low = 0;
+        int high = srcArray.length-1;   
+        System.out.println("length"+(srcArray.length-1));
+        while(low <= high) {   
+            int middle = (low + high)/2;   
+            System.out.println("middle"+middle);
+            if(des == srcArray[middle]) { 
+                return middle;   
+            }else if(des <srcArray[middle]) {   
+                high = middle - 1;   //
+                System.out.println("high"+high);
+            }else {
+                low = middle + 1;   
+                System.out.println("low"+low);
+            }
+        }
+        return -1;  
+   }
+	//?????????????§Ò??????????????????
+	public static <T extends Comparable> T max (Collection<T> c){
+		if(c.isEmpty()) return null;
+		Iterator<T> iter = c.iterator();
+		T largest = iter.next();
+		while (iter.hasNext()) {
+			T next = iter.next();
+			if(largest.compareTo(next)<0)
+				largest = next;
+		}
+		return largest;
+	}
+	//???????
+	public static void bubble(int[] arr){
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i+1; j <arr.length; j++) {
+				if (arr[i]<arr[j]) {
+					int temp=arr[i];
+					arr[i]=arr[j];
+					arr[j]=temp;
+				}
+			}
+		}
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i]+",");
+		}
+	}
+
+	//?????
+    public static void subselect(int head, int length,String result, String str,int n) { 
+        String s =result;
+        for (int i = head; i < str.length() + length - n; i++) {
+                if (length < n) { 
+                    result = result+str.substring(i,i+1); 
+                    subselect(i + 1, length + 1, result,str, n);
+                } else if (length == n) { 
+                    result = result+str.substring(i,i+1); 
+                    subselect(i + 1, length + 1, result,str, n);
+                    System.out.println(result);
+                } else { 
+                    return;
+                }
+                result =s;
+        }
+    }
+	//??????
+	public static void test(){
+			int a = 6;  
+	        int b = 0;  
+	        try { // try???????  
+	            if (b == 0) throw new Exception(); // ???throw????????  
+	            System.out.println("a/b??????" + a / b);  
+	        }
+	        catch (Exception e) { // catch?????  
+	            System.out.println("???????????????b?????0??");  
+	        }
+	        finally{
+	        	System.out.println("??????????????");
+	        }
+	}
+
+	//list????????
+	public static void listChaSet(){
+		  List<String> list = new ArrayList<String>();
+          list.add("COM1");
+          list.add("COM3");
+          list.add("COM2");
+          list.add("COM1");
+          Set<String> set1 = new TreeSet<String>(list);
+          System.out.println(set1);
+	}
+	//???????
+	public static void choSort(int arr[]){
+		for (int i = 0; i < arr.length; i++) {
+			int min=i;
+			for (int j = i+1; j < arr.length; j++) {
+				if (arr[min]>arr[j]) {//?????????????? ??????????????????§³???????
+					min=j;
+				}
+			}
+			if (i!=min) {//????????????????????????
+				int temp=arr[min];
+				arr[min]=arr[i];
+				arr[i]=temp;
+			}
+		}
+		for (int i : arr) {
+			System.out.println(i);
+		}
+	}
+/**
+ * ????????
+ * ????????????????????????????????????????????????¨®??????????????§µ????????????????????????????????????????????§³??????§³????????
+ * out?????¦Ä?????????????????????????????????????????
+ * in:?????out????????????????
+ * ???????????????§³????????????????????????? 
+ */
+	public static void insertSort(int arr[]){
+		for (int out = 1; out < arr.length; out++) {
+			int temp=arr[out];//??????????
+			int in=out;
+			while (in>0&&temp<=arr[in-1]) {
+				arr[in]=arr[in-1];//??????????????????
+				--in;
+			}
+			arr[in]=temp;//?????????????????temp
+		}
+		for (int i : arr) {
+			System.out.println(i);
+		}
+	}
+	
+	//??????????§³
+	  public static void comparetoStr() {
+	    String str1 = "tutorials", str2 = "point";
+	    // comparing str1 and str2
+	    int retval = str1.compareTo(str2);
+	    // prints the return value of the comparison
+	    if (retval < 0) {
+	       System.out.println("str1 is greater than str2");
+	       }
+	    else if (retval == 0) {
+	       System.out.println("str1 is equal to str2");
+	    }
+	    else {
+	       System.out.println("str1 is less than str2");
+	    }
+	  }
+	//???
+	static int a=1;
+	static int sum=0;
+	public static void recursion(){
+		sum+=a;
+		a++;
+		if (a<=100) {
+			recursion();
+		}
+	}
+	public static int add(int sum,int i){
+		if (i > 100) return sum;
+		return add(sum + i, i + 1);
+		}
+	static StringBuffer str=new StringBuffer("*");
+	static int aa=5;
+	public static void str(){
+		System.out.println(str);
+		if (aa>0) {
+			str.append("*");
+			--aa;
+			str();
+		}
+	}
+	 public static int sum(int num) {
+		  if (num > 0) {
+		   return num + sum(num - 1); // ?????ú›??
+		  } else {
+		   return 0; // ??num=0??????????
+		  }
+	}
+	 
+	// ??????????§³??
+	 public static int min(int num1, int num2) {
+	  return num1 > num2 ? num2 : num1;
+	 }
+	 //???hashcode
+	 public static void equalsHashcode(String str1,String str2){
+		 int in1=str1.hashCode();
+		 int in2=str2.hashCode();
+		 System.out.println("in1:"+in1+"\nin2:"+in2);
+		 if (in1==in2) {
+			System.out.println("hashcode????");
+		}else{
+			System.out.println("????");
+		}
+	 }
+		public static String SHA1(String decript) {
+			try {
+				MessageDigest digest = java.security.MessageDigest
+						.getInstance("SHA-1");
+				digest.update(decript.getBytes());
+				byte messageDigest[] = digest.digest();
+				// Create Hex String
+				StringBuffer hexString = new StringBuffer();
+				// ??????????? ??????? ??
+				for (int i = 0; i < messageDigest.length; i++) {
+					String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);
+					if (shaHex.length() < 2) {
+						hexString.append(0);
+					}
+					hexString.append(shaHex);
+				}
+				return hexString.toString();
+
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
+			return "";
+		}
+}

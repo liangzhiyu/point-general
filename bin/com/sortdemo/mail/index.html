@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body { position: relative; width: 100%; height: 100%; }
+        body { background-color: #fff; font: 14px arial; color: #333; }
+        body, div, ul, li, p { margin: 0; padding: 0; }
+        a { color: #333; text-decoration: none; }
+        a:hover { color: blue; }
+        ul { list-style: none; }
+        .section { display: block; padding: 0 20px; }
+        .clearfix:before, .clearfix:after { display: table; content: ""; }
+        .clearfix:after { clear: both; }
+        .pull-left { float: left; }
+        .pull-right { float: right; }
+        .nav-list > .item { float: left; }
+        .nav-list > .item + .item { margin-left: 15px; }
+        .nav-list > .item a { display: block; padding: 10px 0; }
+        .section-search { padding-top: 60px; }
+        .logo img { display: block; margin: 20px auto; width: auto; height: 110px; }
+        .form-bar { margin: 0 auto; width: 600px; }
+        .form-control { position: relative; width: 100%; }
+        .form-control .form-input { display: block; box-sizing: border-box; padding: 0 110px 0 10px; width: 100%; height: 36px; background-color: #fff; border: 1px solid #2d78f4; box-shadow: none; outline: none; }
+        .form-control .button { position: absolute; top: 0; right: 0; width: 100px; height: 36px; background-color: #2d78f4; border: 1px solid #2d78f4; color: #fff; cursor: pointer; }
+        .form-control .button:hover { opacity: .8; }
+        .section-bg { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; box-sizing: border-box; overflow: hidden; width: 100%; height: 100%; }
+        .dg.ac { display: none; }
+        .section-copyright { position: absolute; right: 0; bottom: 0; left: 0; padding-bottom: 40px; width: 100%; }
+        .section-copyright .avatar { margin-bottom: 20px; text-align: center; }
+        .section-copyright .avatar img { display: block; margin: 5px auto; width: 60px; height: 60px; border-radius: 60px; }
+        .section-copyright .links { text-align: center; }
+        .section-copyright .links a { color: #999; font-size: 12px; }
+        .section-copyright .links a + a { margin-left: 10px; }
+        .section-copyright .copyright { margin-top: 10px; text-align: center; font-size: 12px; color: #999; }
+        .section-copyright .copyright span + span { margin-left: 5px; }
+    </style>
+</head>
+<body>
+    <section class="section section-nav">
+        <ul class="nav-list pull-right clearfix">
+            <li class="item">
+                <a href="javascript:;">法萨芬撒</a>
+            </li>
+            <li class="item">
+                <a href="javascript:;">法萨芬撒</a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="section section-search">
+        <div class="logo"><img src="img/bd_logo.png" alt=""></div>
+        <div class="form-bar">
+            <form action="https://www.baidu.com/s" method="get">
+                <div class="form-control">
+                    <input type="hidden" name="ie" value="utf-8">
+                    <input type="hidden" name="f" value="8">
+                    <input type="hidden" name="rsv_bp" value="1">
+                    <input type="hidden" name="rsv_idx" value="1">
+                    <input type="hidden" name="ch" value="">
+                    <input type="hidden" name="tn" value="baidu">
+                    <input type="hidden" name="bar" value="">
+                    <input class="form-input" type="search" name="wd" value="">
+                    <button class="button" type="submit">百度一下</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="section-copyright">
+        <div class="avatar">
+            <img src="img/u=2450994032,3525797548&fm=27&gp=0.jpg" alt="">
+            <p>贺淑媚</p>
+        </div>
+        <div class="links">
+            <a href="javascript:;">阿斯顿撒</a>
+            <a href="javascript:;">阿斯顿撒</a>
+            <a href="javascript:;">阿斯顿撒</a>
+            <a href="javascript:;">阿斯顿撒</a>
+            <a href="javascript:;">阿斯顿撒</a>
+        </div>
+        <div class="copyright">
+            <span>&copy;2017</span>
+            <span>Baidu</span>
+            <span>使用百度前必读</span>
+            <span>意见反馈</span>
+            <span>京ICP证030173号</span>
+            <span>京公网安备11000002000001号</span>
+        </div>
+    </section>
+
+    <section class="section-bg">
+        <canvas id="canvas"></canvas>
+    </section>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js'></script>
+    <script src='http://s3.amazonaws.com/toxiclibsjs/toxiclibsjs/build/toxiclibs.min.js'></script>
+    <script src='http://s3.amazonaws.com/animitter/0.5/animitter.min.js'></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
