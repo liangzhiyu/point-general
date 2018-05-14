@@ -8,11 +8,11 @@ import java.util.*;
 public class OtherTest {
 
 	public static void main(String[] args) {
-
-
-		Double a;
-		Double b=34.32;
-		System.out.println(a+b);
+		Double userSaveMoneyInit =0.0;
+		BigDecimal userSaveMoney = new BigDecimal(Double.toString( userSaveMoneyInit==null?0:userSaveMoneyInit));//用户总优惠金额
+		BigDecimal entrySaveMoney = new BigDecimal(Double.toString(10.0));//用户此次优惠金额
+		userSaveMoney.add(entrySaveMoney);
+		System.out.println(userSaveMoney.add(entrySaveMoney));
 
 		/*Random r = new Random(100);
 		int i=0;
