@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dell on 2018/4/24.
@@ -13,9 +14,25 @@ import java.util.ArrayList;
 public class FastJsonDemo {
 
     public static void main(String[] args) {
-        transferToBean();
-        testJSONStrToJavaBeanList();
+//        transferToBean();
+        createFastJson();
+//        testJSONStrToJavaBeanList();
     }
+
+    public static void createFastJson(){
+        List<JSONObject> jsonList = new ArrayList<JSONObject>();
+        for (int i=0;i<6;i++) {
+            JSONObject json  = new JSONObject();
+            json.put("name","name"+i);
+            json.put("sex","man");
+            json.put("age","18"+i);
+            jsonList.add(json);
+            System.out.println(JSON.toJSONString(json));
+        }
+        System.out.println("-----------------------");
+        System.out.println(JSON.toJSONString(jsonList));
+    }
+
     public static void transferToBean(){
         Student student = new Student();
         student.setAge(18);
