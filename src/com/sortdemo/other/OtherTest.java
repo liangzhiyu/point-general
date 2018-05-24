@@ -1,6 +1,7 @@
 package com.sortdemo.other;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
@@ -8,11 +9,31 @@ import java.util.*;
 public class OtherTest {
 
 	public static void main(String[] args) {
-		Double userSaveMoneyInit =0.0;
+		BigDecimal a = new BigDecimal((String.valueOf(275.78)));
+		BigDecimal b = new BigDecimal((Double.toString(0.152)));
+		System.out.println(a.multiply(b).setScale(2,RoundingMode.HALF_UP).doubleValue());
+
+
+//		BigDecimal a = new BigDecimal(275.78);//用户此次优惠金额
+//		System.out.println((a.multiply(new BigDecimal(100)).setScale(2, RoundingMode.HALF_UP).intValue()));
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*	Double userSaveMoneyInit =0.0;
 		BigDecimal userSaveMoney = new BigDecimal(Double.toString( userSaveMoneyInit==null?0:userSaveMoneyInit));//用户总优惠金额
 		BigDecimal entrySaveMoney = new BigDecimal(Double.toString(10.0));//用户此次优惠金额
 		userSaveMoney.add(entrySaveMoney);
-		System.out.println(userSaveMoney.add(entrySaveMoney));
+		System.out.println(userSaveMoney.add(entrySaveMoney));*/
 
 		/*Random r = new Random(100);
 		int i=0;

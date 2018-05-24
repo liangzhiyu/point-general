@@ -22,7 +22,6 @@ public class ThreadMain extends Thread {
     public static ThreadMain newThread(int i){
         Thread thread = new ThreadMain();
         thread.setName("threadName"+i);
-        thread.start();
         i++;
         return i>10?null:newThread(i);
     }
