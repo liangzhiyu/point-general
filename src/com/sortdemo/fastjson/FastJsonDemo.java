@@ -14,8 +14,8 @@ import java.util.List;
 public class FastJsonDemo {
 
     public static void main(String[] args) {
-//        transferToBean();
-        createFastJson();
+        transferToBean();
+//        createFastJson();
 //        testJSONStrToJavaBeanList();
     }
 
